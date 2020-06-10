@@ -1,0 +1,53 @@
+Instructions:
+
+As a user:
+- I can add bookmarks to my bookmarks list. Bookmarks contain:
+    - title
+    - url link
+    - description
+    - rating (1-5)
+- I can see a list of my bookmarks when I first open app
+    - All bookmarks in the list default to a 'condensed' view showing ONLY title and rating
+- I can click on a bookmark to display the 'detailed' view
+    - Detailed view expands to additionally display description and a 'Visit Site' link
+- I can remove bookmarks from my bookmark list
+- I receive appropriate feedback when I cannot submit a bookmark
+    - Check all validations in the API documentation (eg. title and url field required)
+- I can select from a dropdown (a <select> element) a 'minimum rating' to filter the list by all bookmarks rated at or above the chosen selection
+- (Extensive feature - optional) I can edit the rating and description of a bookmark in my list
+
+Technical Requirements:
+
+- Use fetch for AJAX calls and jQuery for DOM manipulation
+- Use namespacing to adhere to good architecture practices
+    - Minimal global variables
+    - Create modules in separate files to organize your code
+    - Logically group your functions (eg. API methods, store methods..)
+- Keep your data out of the DOM
+    - No direct DOM manipulation in your event handlers!
+    - Follow the React-ful design pattern - change your state, re-render your component
+- Use semantic HTML
+- Use responsive and mobile-first design
+    - Visually and functionally solid in viewports for mobile and desktop
+- Follow a11y best practices
+    - Refer back to the accessibility checklist and the lesson on forms (aka quiz app)
+
+
+What does the initial loaded page look like?
+What is each action a user can take ...
+  1. add a bookmark to list (title, url link, description, rating 1-5)
+  2. click on bookmark to display 'detailed' view
+  3. OPTIONAL: edit rating and description of bookmark on list
+  4. remove bookmarks from list 
+  5. receive feedback when bookmark cant be added (need name, need url, etc)
+  6. select a 'minimun rating' dropdown (<select>) to filter list by all bookmarks
+      at or above chosen selection
+
+... and how does it effect the visual layout? (see condensed list when first open app,
+detailed view offers added description and 'visit site' link)
+
+Bookmarks Site Where I Draw Data From:
+https://thinkful-list-api.herokuapp.com/endpoints/bookmarks
+
+Bookmark objects consist of (id, title, url, desc, rating)
+
