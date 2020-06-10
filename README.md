@@ -2,4 +2,4 @@
 
 This is a solo app project created by Emily Compton.
 
-This app let's you bookmark your favorite pages!
+This app let's you bookmark your favorite web pages pages!
