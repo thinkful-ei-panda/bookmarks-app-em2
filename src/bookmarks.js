@@ -1,7 +1,5 @@
-// import $ from 'jquery';
-
-// import store from './store';
-// import api from './api';
+// import store from './store.js';
+// import api from './api.js';
 
 
 // function to get bookmark id from element (bookmark arg)
@@ -43,7 +41,8 @@
 
 
 
-// dont forget render
+// function to render bookmarks page
+// const render = function() {}
 
 
 

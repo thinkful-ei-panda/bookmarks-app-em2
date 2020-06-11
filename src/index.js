@@ -1,11 +1,8 @@
-// import $ from 'jquery';
+// import './styles.css';
 
-// import 'normalize.css'; ???
-// import './index.css';
-
-// import store from './store';
-// import api from './api';
-// import bookmarks from './bookmarks';
+// import store from './store.js';
+// import api from './api.js';
+// import bookmarks from './bookmarks.js';
 
 // function to call event listeners and render
 // const main = function() {
@@ -18,5 +15,5 @@
 
 // };
 
-// call main functon (jquery)
+// call main function (jquery)
 // $(main);

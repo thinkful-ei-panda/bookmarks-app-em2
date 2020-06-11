@@ -51,3 +51,12 @@ https://thinkful-list-api.herokuapp.com/endpoints/bookmarks
 
 Bookmark objects consist of (id, title, url, desc, rating)
 
+
+Initial View <code></code> at bottom
+store = { bookmarks: [], ..adding: false }
+
+Adding New Bookmark <code></code> at bottom
+store = { bookmarks: [], ..adding: true }
+
+Detailed View 
+store = { bookmarks: [ ... expanded: true ] }
