@@ -21,13 +21,44 @@ const generateNewBookmark = function(bookmark) {
   </li>`;
 };
 
+// function to generate form html
+const generateAddBookmarkForm = function() {
+  return `<main>
+  <h1>My Bookmarks</h1>
+  <h2>Add New Bookmark</h2>
+  <form id="js-bookmark-list-form">
+    <label for="title">Bookmark Title</label>
+    <input type="text" name="title" placeholder="ie. Google" id="title" required>
+    <input type="link" name="url" placeholder="https://www.google.com/" id="link" required>
+    <select id="rating" name="rating" required>
+      <option value="">Select A Rating</option>
+      <option value="5">5 Stars</option>
+      <option value="4">4 Stars</option>
+      <option value="3">3 Stars</option>
+      <option value="2">2 Stars</option>
+      <option value="1">1 Star</option>
+    </select>
+    <input type="text" name="desc" placeholder="Add Description Here" id="desc" required>
+    <button type="submit">Create</button>
+    <button type="cancel">Cancel</button>
+  </form>
+</main>`;
+};
 
 
-// function to generate bookmarks string ??
+// function to generate bookmarks string
 const generateBookmarkString = function (bookmarkList) {
   const bookmarks = bookmarkList.map((bookmark) => 
     generateNewBookmark(bookmark));
   return bookmarks.join('');
+};
+
+
+// function to open form page when add new bookmark is clicked
+const handleAddNewBookmarkClick = function() {
+  $('.js-add-bookmark').click(event => {
+    generateAddBookmarkForm();
+  });
 };
 
 
@@ -42,17 +73,18 @@ const handleNewBookmarkSubmit = function() {
     const newBookmarkRating = $('#rating').val('');
     api.createBookmark(newBookmarkTitle, newBookmarkUrl, 
       newBookmarkDesc, newBookmarkRating)
+      .then(response => response.json())
       .then((newBookmark) => {
         store.addBookmark(newBookmark);
         render();
-        console.log(newBookmarkTitle);
-      })
-      .catch((error) => {
-        console.log(error);
       });
   });
 };
 // api.createBookmark plus 2 promises
+
+
+// function to handle cancel button click
+// const handleCancelButtonClicked = function() {}
 
 
 
@@ -93,8 +125,10 @@ const render = function() {
 const bindEventListeners = function() {
   getBookmarkIDFromElement,
   generateNewBookmark,
+  generateAddBookmarkForm,
   generateBookmarkString,
-  handleNewBookmarkSubmit
+  handleAddNewBookmarkClick,
+  handleNewBookmarkSubmit;
   // handleDeleteBookmarkClicked,
   // handleFilterBookmarks,
   // handleDetailedViewClicked
