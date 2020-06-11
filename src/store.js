@@ -35,7 +35,7 @@
 // export default {
 //   findById,
 //   addBookmark,
-//   findAndEdit (optional),
 //   findAndDelete,
-//   showDetailedView
+//   showDetailedView,
+//   findAndEdit (optional),
 // };

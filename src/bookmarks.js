@@ -11,7 +11,7 @@
 
 // function to generate new bookmark element (bookmark ar) (add if statement for
 // making sure title and rating are filled out)
-// const generateBookmarkHTML = function() {}
+// const generateNewBookmark = function() {}
 
 
 
@@ -38,6 +38,8 @@
 
 
 
+// function to handle detailed view clicked
+// const handleDetailedViewClicked = function() {}
 
 
 
@@ -46,7 +48,26 @@
 
 
 
-
 // optional
 // function to handle edit bookmark
+// const handleEditBookmarkSubmit = function() {}
+// api.updateItem plus 1 promise
 
+
+
+// function to run all event listeners/handlers
+// const bindEventListeners = function() {
+//   getBookmarkIDFromElement,
+//   generateNewBookmark,
+//   generateBookmarkString, (??)
+//   handleNewBookmarkSubmit,
+//   handleDeleteBookmarkClicked,
+//   handleFilterBookmarks,
+//   handleDetailedViewClicked
+//   handleEditBookmarkSubmit, (optional)
+// };
+
+// export default {
+//   render,
+//   bindEventListeners
+// };
