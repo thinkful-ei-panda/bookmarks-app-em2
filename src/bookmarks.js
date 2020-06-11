@@ -1,5 +1,5 @@
-// import store from './store.js';
-// import api from './api.js';
+import store from './store.js';
+import api from './api.js';
 
 
 // function to get bookmark id from element (bookmark arg)
@@ -7,8 +7,8 @@
 
 
 
-// function to generate new bookmark element (bookmark ar) (add if statement for
-// making sure title and rating are filled out)
+// function to generate new bookmark element (bookmark ar) 
+// (add if statement for making sure title, url, desc and rating are filled out, do we need this 'req')
 // const generateNewBookmark = function() {}
 
 

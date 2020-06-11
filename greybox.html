@@ -1,30 +1,78 @@
 <!-- Main Page HTML (condensed view) -->
 
-
-
+<main>
+<h1>My Bookmarks</h1>
+<button>Add New Bookmark</button>
+<select class="filter" name="filter">
+  <option value="">Filter By Rating</option>
+  <option value="5">5 Stars</option>
+  <option value="4">4 Stars</option>
+  <option value="3">3 Stars</option>
+  <option value="2">2 Stars</option>
+  <option value="1">1 Star</option>
+</select>
+<div>
+  <ul>
+    <li>Title
+      <span>Rating</span>
+    </li>
+    <li>Title
+      <span>Rating</span>
+    </li>
+    <li>Title
+      <span>Rating</span>
+    </li>
+  </ul>
+</div>
+</main>
 
 
 <!-- Add New Bookmark HTML -->
 
-
-
-
-
+<main>
+  <h1>My Bookmarks</h1>
+  <h2>Add New Bookmark</h2>
+  <form>
+    <label for="title">Bookmark Title</label>
+    <input type="text" name="title" placeholder="ie. Google" id="title" required>
+    <input type="link" name="url" placeholder="https://www.google.com/" id="link" required>
+    <select class="rating" name="rating" required>
+      <option value="">Select A Rating</option>
+      <option value="5">5 Stars</option>
+      <option value="4">4 Stars</option>
+      <option value="3">3 Stars</option>
+      <option value="2">2 Stars</option>
+      <option value="1">1 Star</option>
+    </select>
+    <input type="text" name="desc" placeholder="Add Description Here" id="description" required>
+    <button>Create</button>
+    <button>Cancel</button>
+  </form>
+</main>
 
 
 <!-- Expanded View HTML (with description and 'Visit Site' link -->
 
+<main>
+  <h1>My Bookmarks</h1>
+  <button>Add New Bookmark</button>
+  <select class="filter" name="filter">
+    <option value="">Filter By Rating</option>
+    <option value="5">5 Stars</option>
+    <option value="4">4 Stars</option>
+    <option value="3">3 Stars</option>
+    <option value="2">2 Stars</option>
+    <option value="1">1 Star</option>
+  </select>
 
-
-
-
-
-<!-- Form Error HTML ???? -->
-
-
-
-
-
+  <div>
+    <h3>Title</h3>
+    <p>Lorem ispum</p>
+    <button>Visit Site</button>
+    <button>Delete Bookmark</button>
+    <p>Rating</p>
+  </div>
+</main>
 
 
 <!-- Edit Bookmark HTML (optional) -->

@@ -1,8 +1,8 @@
-// import './styles.css';
+import './styles.css';
 
-// import store from './store.js';
-// import api from './api.js';
-// import bookmarks from './bookmarks.js';
+import store from './store.js';
+import api from './api.js';
+import bookmarks from './bookmarks.js';
 
 // function to call event listeners and render
 // const main = function() {
