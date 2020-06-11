@@ -23,7 +23,7 @@ const createBookmark = function(title, url, desc, rating) {
   return fetch(`${BASE_URL}/bookmarks`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: newItem
   });

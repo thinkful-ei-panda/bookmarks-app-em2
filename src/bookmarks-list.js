@@ -1,5 +1,5 @@
-import store from './store.js';
-import api from './api.js';
+import store from '/src/store.js';
+import api from '/src/api.js';
 
 
 // function to get bookmark id from element (bookmark arg,
@@ -17,7 +17,7 @@ const getBookmarkIDFromElement = function(bookmark) {
 const generateNewBookmark = function(bookmark) {
   return `
   <li class="js-item-element" data-item-id="${bookmark.id}">
-  ${bookmarkTitle}<span>${bookmarkRating}</span>
+  ${bookmark.title}<span>${bookmark.rating}</span>
   </li>`;
 };
 
@@ -33,7 +33,25 @@ const generateBookmarkString = function (bookmarkList) {
 
 
 // function to handle new bookmark submit
-// const handleNewBookmarkSubmit = function() {}
+const handleNewBookmarkSubmit = function() {
+  $('#js-bookmark-list-form').submit(event => {
+    event.preventDefault();
+    const newBookmarkTitle = $('#title').val('');
+    const newBookmarkUrl = $('#link').val('');
+    const newBookmarkDesc = $('#desc').val('');
+    const newBookmarkRating = $('#rating').val('');
+    api.createBookmark(newBookmarkTitle, newBookmarkUrl, 
+      newBookmarkDesc, newBookmarkRating)
+      .then((newBookmark) => {
+        store.addBookmark(newBookmark);
+        render();
+        console.log(newBookmarkTitle);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+};
 // api.createBookmark plus 2 promises
 
 
@@ -57,6 +75,7 @@ const generateBookmarkString = function (bookmarkList) {
 
 // function to render bookmarks page
 const render = function() {
+  let bookmarks = [...store.bookmarks];
   const bookmarkListItemsString = generateBookmarkString(bookmarks);
   $('.js-bookmark-list').html(bookmarkListItemsString);
 };
@@ -75,13 +94,13 @@ const bindEventListeners = function() {
   getBookmarkIDFromElement,
   generateNewBookmark,
   generateBookmarkString,
-  handleNewBookmarkSubmit,
-  handleDeleteBookmarkClicked,
-  handleFilterBookmarks,
-  handleDetailedViewClicked
+  handleNewBookmarkSubmit
+  // handleDeleteBookmarkClicked,
+  // handleFilterBookmarks,
+  // handleDetailedViewClicked
 };
 
-// export default {
-//   render,
-//   bindEventListeners
-// };
+export default {
+  render,
+  bindEventListeners
+};

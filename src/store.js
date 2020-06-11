@@ -51,5 +51,6 @@ export default {
   findById,
   addBookmark,
   findAndDelete,
-  showDetailedView
+  showDetailedView,
+  bookmarks
 };
