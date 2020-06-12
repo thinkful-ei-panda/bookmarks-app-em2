@@ -12,13 +12,8 @@ const getBookmarks = function() {
 
 
 // function to create a new bookmark (needs title, url)
-const createBookmark = function(title, url, desc, rating) {
-  const newItem = JSON.stringify({
-    title: title,
-    url: url,
-    desc: desc,
-    rating: rating
-  });
+const createBookmark = function(bookmark) {
+  const newItem = JSON.stringify(bookmark);
 
   return fetch(`${BASE_URL}/bookmarks`, {
     method: 'POST',

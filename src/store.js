@@ -14,13 +14,7 @@ const findById = function(id) {
 
 
 // function to add a bookmark (title arg)
-const addBookmark = function(title, url, desc, rating) {
-  const bookmark = {
-    title: title,
-    url: url,
-    desc: desc,
-    rating: rating
-  };
+const addBookmark = function(bookmark) {
   this.bookmarks.push(bookmark);
 };
 

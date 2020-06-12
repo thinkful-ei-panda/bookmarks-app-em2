@@ -64,23 +64,28 @@ const handleAddNewBookmarkClick = function() {
 
 
 // function to handle new bookmark submit
+// api.createBookmark plus 1 promise and error catch
 const handleNewBookmarkSubmit = function() {
   $('#js-bookmark-list-form').submit(event => {
     event.preventDefault();
-    const newBookmarkTitle = $('#title').val('');
-    const newBookmarkUrl = $('#link').val('');
-    const newBookmarkDesc = $('#desc').val('');
-    const newBookmarkRating = $('#rating').val('');
-    api.createBookmark(newBookmarkTitle, newBookmarkUrl, 
-      newBookmarkDesc, newBookmarkRating)
+    console.log('submit event');
+    let params = {};
+    params.title = $('#title').val();
+    params.url = $('#link').val();
+    params.desc = $('#desc').val();
+    params.rating = $('#rating').val();
+
+    api.createBookmark(params)
       .then(response => response.json())
       .then((newBookmark) => {
         store.addBookmark(newBookmark);
         render();
+      })
+      .catch((error) => {
+        console.log(error);
       });
   });
 };
-// api.createBookmark plus 2 promises
 
 
 // function to handle cancel button click
@@ -108,7 +113,9 @@ const handleNewBookmarkSubmit = function() {
 // function to render bookmarks page
 const render = function() {
   let bookmarks = [...store.bookmarks];
+  console.log(bookmarks);
   const bookmarkListItemsString = generateBookmarkString(bookmarks);
+  console.log(bookmarkListItemsString);
   $('.js-bookmark-list').html(bookmarkListItemsString);
 };
 
@@ -123,15 +130,11 @@ const render = function() {
 
 // function to run all event listeners/handlers
 const bindEventListeners = function() {
-  getBookmarkIDFromElement,
-  generateNewBookmark,
-  generateAddBookmarkForm,
-  generateBookmarkString,
-  handleAddNewBookmarkClick,
-  handleNewBookmarkSubmit;
-  // handleDeleteBookmarkClicked,
-  // handleFilterBookmarks,
-  // handleDetailedViewClicked
+  handleAddNewBookmarkClick();
+  handleNewBookmarkSubmit();
+  // handleDeleteBookmarkClicked();
+  // handleFilterBookmarks();
+  // handleDetailedViewClicked();
 };
 
 export default {
