@@ -1,8 +1,12 @@
 // create an array to store bookmarks
 const bookmarks = [];
-
+// create variable for adding bookmark
+const adding = false;
+// create variable error
+const error = null;
+// create variable for filter button
+const filter = 0;
 // create variable for condensed view
-// let condensedView = false;
 
 
 
@@ -15,6 +19,12 @@ const findById = function(id) {
 
 // function to add a bookmark (title arg)
 const addBookmark = function(bookmark) {
+  // add expanded key-value 
+  let expandedView = {
+    expanded: false,
+  };
+  // push new bookmark to store
+  Object.assign(bookmark, expandedView);
   this.bookmarks.push(bookmark);
 };
 
@@ -46,5 +56,8 @@ export default {
   addBookmark,
   findAndDelete,
   showDetailedView,
-  bookmarks
+  bookmarks,
+  adding,
+  error,
+  filter
 };

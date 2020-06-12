@@ -1,14 +1,24 @@
 // 'use strict';
 
+import bookmarks from '/src/bookmarks-list.js';
+
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/em';
 
-// remember the bookmarksAPIFetch function
+// remember the bookmarksAPIFetch function !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 // function to fetch bookmarks (base url / bookmarks)
-const getBookmarks = function() {
-  return fetch(`${BASE_URL}/bookmarks`);
+const getBookmarks = function(bookmark) {
+  const newItem = JSON.stringify(bookmark);
+
+  return fetch(`${BASE_URL}/bookmarks`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
 };
+
 
 
 // function to create a new bookmark (needs title, url)
@@ -40,7 +50,7 @@ const deleteBookmark = function() {
 
 
 export default {
-  getBookmarks,
+  // getBookmarks,
   createBookmark,
   deleteBookmark
 };
