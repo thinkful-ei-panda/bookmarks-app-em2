@@ -2,9 +2,11 @@ import store from '/src/store.js';
 import api from '/src/api.js';
 
 // function to generate start page HTML
-const generateStartPage = function() {
-  return `
-<h1>My Bookmarks</h1>
+const generateHomePage = function() {
+  console.log('generate function');
+  return `<header>
+  <h1>Em's Bookmark App</h1>
+  </header>
 <button class="js-add-bookmark">Add New Bookmark</button>
 <select class="filter" name="filter">
   <option value="">Filter By Rating</option>
@@ -14,12 +16,7 @@ const generateStartPage = function() {
   <option value="2">2 Stars</option>
   <option value="1">1 Star</option>
 </select>
-<div>
-  <ul class="js-bookmark-list">
-    <li class="js-item-element" data-item-id="${store.bookmarks.id}">${store.bookmarks.title}
-      <span>${store.bookmarks.rating}</span>
-    </li>
-  </ul>
+<div>${generateBookmarkList()}
 </div>`;
 };
 
@@ -32,11 +29,21 @@ const getBookmarkIDFromElement = function(bookmark) {
     .data('item-id');
 };
 
-
+// function that generates bookmark list
+const generateBookmarkList = function() {
+  const bookmarks = store.bookmarks.map(function (bookmark){
+    return generateBookmark(bookmark);
+  });
+  console.log('bookmarks', bookmarks);
+  return `<ul class="js-bookmark-list">
+  ${bookmarks}
+  </ul>`;
+};
 
 // function to generate new bookmark element (bookmark ar) 
 // (add if statement for making sure title, url, desc and rating are filled out, do we need this 'req')
-const generateNewBookmark = function(bookmark) {
+const generateBookmark = function(bookmark) {
+  console.log(generateBookmark(), 'is making li');
   return `
   <li class="js-item-element" data-item-id="${bookmark.id}">
   ${bookmark.title}<span>${bookmark.rating}</span>
@@ -67,9 +74,10 @@ const generateAddBookmarkForm = function() {
 
 // function to generate bookmarks string
 const generateBookmarkString = function(bookmarkList) {
-  const bookmarks = bookmarkList.map((bookmark) => 
-    generateNewBookmark(bookmark));
-  return bookmarks.join('');
+  const bookmarks = bookmarkList.map(bookmark => {
+    $('body').html(generateBookmark(bookmark));
+    return bookmarks.join('');
+  });
 };
 
 
@@ -77,19 +85,20 @@ const generateBookmarkString = function(bookmarkList) {
 const handleAddNewBookmarkClick = function() {
   $('.js-add-bookmark').click(event => {
     console.log('this was clicked');
-    // $('main').html()
-    generateAddBookmarkForm();
-    render();
+    $('body').html(generateAddBookmarkForm());
+    console.log(generateAddBookmarkForm(), 'lalala');
+    $('body').html(renderBookmarks());
+    console.log(renderBookmarks(), 'boooooo');
   });
 };
 
 
 
 // function to handle new bookmark submit
-// api.createBookmark plus 1 promise and error catch
+// api.createBookmark plus 2 promise and error catch
 const handleNewBookmarkSubmit = function() {
   console.log('does this Submit');
-  $('#js-bookmark-list-form').submit(event => {
+  $('body').on('submit', '#js-bookmark-list-form', event => {
     event.preventDefault();
     console.log('submit event');
     let params = {};
@@ -99,14 +108,12 @@ const handleNewBookmarkSubmit = function() {
     params.rating = $('#rating').val();
     // document.getElementById('js-bookmark-list-form').reset();
     console.log(params);
-    api.createBookmark(params)
+    api.createBookmarkAPI(params)
       .then(response => response.json())
-      .then(newBookmark => {
-        store.addBookmark(newBookmark);
-        render();
-      })
-      .catch((error) => {
-        console.log(error);
+      .then(bookmarks => {
+        // store.addBookmark(newBookmark);
+        store.bookmarks.push(bookmarks);
+        renderBookmarks();
       });
   });
 };
@@ -119,28 +126,31 @@ const handleNewBookmarkSubmit = function() {
 
 // function to handle delete bookmark
 // const handleDeleteBookmarkClicked = function() {}
+// use getBookmarkIDFromElement()
 // api.deleteItem plus 2 promises
 
 
 
 // function to handle filtering bookmarks, use filter variable in store
 // const handleFilterBookmarks = function() {}
+// use getBookmarkIDFromElement()
 // <select> element
 
 
 
 // function to handle detailed view clicked
 // const handleDetailedViewClicked = function() {}
+// use getBookmarkIDFromElement()
 
 
 
 // function to render bookmarks page
-const render = function() {
+const renderBookmarks = function() {
   let bookmarks = [...store.bookmarks];
   console.log(bookmarks);
   const bookmarkListItemsString = generateBookmarkString(bookmarks);
   console.log(bookmarkListItemsString);
-  $('.js-bookmark-list').html(bookmarkListItemsString);
+  $('body').html(bookmarkListItemsString);
 };
 
 
@@ -162,7 +172,7 @@ const bindEventListeners = function() {
 };
 
 export default {
-  render,
+  renderBookmarks,
   bindEventListeners,
-  generateStartPage
+  generateHomePage
 };

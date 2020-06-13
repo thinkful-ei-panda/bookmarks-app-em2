@@ -11,38 +11,45 @@ const filter = 0;
 
 
 // function to find bookmark by id (id arg)
-const findById = function(id) {
+const findCurrentBookmarkById = function(id) {
   return this.bookmarks.find(currentBookmark => currentBookmark.id === id);
 };
 
 
 
 // function to add a bookmark (title arg)
-const addBookmark = function(bookmark) {
+const addBookmarkToStore = function(userData) {
   // add expanded key-value 
-  let expandedView = {
-    expanded: false,
-  };
-  // push new bookmark to store
-  Object.assign(bookmark, expandedView);
-  this.bookmarks.push(bookmark);
+  userData.forEach(bookmark => {
+    bookmark['expand'] = false;
+    this.bookmarks.push(bookmark);
+  });
 };
+  // let expandedView = {
+  //   expanded: false,
+  // };
+  // // push new bookmark to store
+  // Object.assign(bookmark, expandedView);
+  // this.bookmarks.push(bookmark);
 
 
 
 // function to find and delete a bookmark (id)
-const findAndDelete = function(id) {
-  this.bookmarks = this.bookmarks.filter(currentBookmark => 
-    currentBookmark.id !== id);
+const deleteBookmarkFromStore = function(id) {
+  const targetBookmark = this.bookmarks.findIndex(currentBookmark => 
+    currentBookmark === targetBookmark);
+  this.bookmarks.splice(targetBookmark, 1);
 };
 
 
 
 // function to show detailed view () (no args, use condensedView variable)
-const showDetailedView = function(id) {
-  this.bookmarks.expanded;
-  // return expanded bookmark view function
-};
+// const showDetailedView = function(id) {
+//   // how to show the view has been expanded??
+
+//   this.bookmarks.expanded === true;
+//   // return expanded bookmark view function
+// };
 
 
 
@@ -52,10 +59,10 @@ const showDetailedView = function(id) {
 
 
 export default {
-  findById,
-  addBookmark,
-  findAndDelete,
-  showDetailedView,
+  findCurrentBookmarkById,
+  addBookmarkToStore,
+  deleteBookmarkFromStore,
+  // showDetailedView,
   bookmarks,
   adding,
   error,

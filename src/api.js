@@ -1,6 +1,6 @@
 // 'use strict';
 
-import bookmarks from '/src/bookmarks-list.js';
+import bookmarks from '/src/bookmark-list.js';
 
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/em';
 
@@ -8,21 +8,22 @@ const BASE_URL = 'https://thinkful-list-api.herokuapp.com/em';
 
 
 // function to fetch bookmarks (base url / bookmarks)
-const getBookmarks = function(bookmark) {
-  const newItem = JSON.stringify(bookmark);
-
-  return fetch(`${BASE_URL}/bookmarks`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-  });
+const getBookmarksAPI = function() {
+  return fetch(`${BASE_URL}/bookmarks`);
 };
+//   {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//   })
+//     .then(response => response.json());
+// };
 
 
 
 // function to create a new bookmark (needs title, url)
-const createBookmark = function(bookmark) {
+const createBookmarkAPI = function(bookmark) {
   const newItem = JSON.stringify(bookmark);
 
   return fetch(`${BASE_URL}/bookmarks`, {
@@ -36,7 +37,7 @@ const createBookmark = function(bookmark) {
 
 
 // function to delete a bookmark
-const deleteBookmark = function() {
+const deleteBookmarkAPI = function(id) {
   return fetch(`${BASE_URL}/bookmarks/${id}`, {
     method: 'DELETE'
   });
@@ -50,7 +51,7 @@ const deleteBookmark = function() {
 
 
 export default {
-  // getBookmarks,
-  createBookmark,
-  deleteBookmark
+  getBookmarksAPI,
+  createBookmarkAPI,
+  deleteBookmarkAPI
 };
