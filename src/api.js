@@ -5,11 +5,29 @@ import bookmarks from '/src/bookmark-list.js';
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/em';
 
 // remember the bookmarksAPIFetch function !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const bookmarksListAPIFetch = function(...args) {
+  let error;
+  return fetch(...args)
+    .then(response => {
+      if (!response.ok) {
+        error = {code: response.status};
+      }
+      return response.json();
+    })
+    .then(data => {
+      if(error) {
+        error.message = data.message;
+        return Promise.reject(error);
+      }
+      return data;
+    });
+};
 
 
 // function to fetch bookmarks (base url / bookmarks)
 const getBookmarksAPI = function() {
-  return fetch(`${BASE_URL}/bookmarks`);
+  return bookmarksListAPIFetch(`${BASE_URL}/bookmarks`);
+  // .then(response => response.json());
 };
 //   {
 //     method: 'GET',
@@ -26,7 +44,7 @@ const getBookmarksAPI = function() {
 const createBookmarkAPI = function(bookmark) {
   const newItem = JSON.stringify(bookmark);
 
-  return fetch(`${BASE_URL}/bookmarks`, {
+  return bookmarksListAPIFetch(`${BASE_URL}/bookmarks`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -38,9 +56,10 @@ const createBookmarkAPI = function(bookmark) {
 
 // function to delete a bookmark
 const deleteBookmarkAPI = function(id) {
-  return fetch(`${BASE_URL}/bookmarks/${id}`, {
+  return bookmarksListAPIFetch(`${BASE_URL}/bookmarks/${id}`, {
     method: 'DELETE'
   });
+// .then(response => response.json());
 };
 
 

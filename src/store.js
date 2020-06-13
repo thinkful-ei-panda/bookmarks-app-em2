@@ -5,9 +5,9 @@ const adding = false;
 // create variable error
 const error = null;
 // create variable for filter button
-const filter = 0;
+const filter = 1;
 // create variable for condensed view
-
+const isExpanded = { expand: false };
 
 
 // function to find bookmark by id (id arg)
@@ -20,10 +20,8 @@ const findCurrentBookmarkById = function(id) {
 // function to add a bookmark (title arg)
 const addBookmarkToStore = function(userData) {
   // add expanded key-value 
-  userData.forEach(bookmark => {
-    bookmark['expand'] = false;
-    this.bookmarks.push(bookmark);
-  });
+  $.extend(userData, isExpanded);
+  this.bookmarks.push(userData);
 };
   // let expandedView = {
   //   expanded: false,
@@ -36,9 +34,15 @@ const addBookmarkToStore = function(userData) {
 
 // function to find and delete a bookmark (id)
 const deleteBookmarkFromStore = function(id) {
-  const targetBookmark = this.bookmarks.findIndex(currentBookmark => 
-    currentBookmark === targetBookmark);
-  this.bookmarks.splice(targetBookmark, 1);
+  for (let i = 0; i < this.bookmarks.length; i++) {
+    if (this.bookmarks[i].id === id) {
+      this.bookmarks.splice(i, 1);
+    }
+  }
+};
+
+const setError = function(error) {
+  this.error = error;
 };
 
 
@@ -62,6 +66,7 @@ export default {
   findCurrentBookmarkById,
   addBookmarkToStore,
   deleteBookmarkFromStore,
+  setError,
   // showDetailedView,
   bookmarks,
   adding,
