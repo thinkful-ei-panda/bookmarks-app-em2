@@ -1,11 +1,11 @@
-import store from '/src/store.js';
-import api from '/src/api.js';
-import generate from '/src/generate.js';
+import store from './store.js';
+import api from './api.js';
+import generate from './generate.js';
 
 // function to get bookmark id from element (bookmark arg,
 // bookmark const in store.js)
 const getBookmarkIDFromElement = function(bookmark) {
-  console.log(bookmark)
+  // console.log(bookmark)
   return $(bookmark)
     .closest('li')
     .data('item-id');
@@ -19,7 +19,7 @@ const getBookmarkIDFromElement = function(bookmark) {
 const handleAddNewBookmarkClick = function() {
   $('body').on('click', '.js-add-bookmark', event => {
     event.preventDefault();
-    console.log('this was clicked');
+    // console.log('this was clicked');
     store.adding = !store.adding;
     // $('body').html(generate.addBookmarkForm());
     // console.log(generate.addBookmarkForm(), 'lalala');
@@ -33,10 +33,10 @@ const handleAddNewBookmarkClick = function() {
 // function to handle new bookmark submit
 // api.createBookmark plus 2 promise and error catch
 const handleNewBookmarkSubmit = function() {
-  console.log('does this Submit');
+  // console.log('does this Submit');
   $('body').on('submit', '#js-bookmark-list-form', event => {
     event.preventDefault();
-    console.log('submit event');
+    // console.log('submit event');
     let params = {};
     params.title = $('#title').val();
     params.url = $('#link').val();

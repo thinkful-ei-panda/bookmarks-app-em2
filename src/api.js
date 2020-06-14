@@ -1,6 +1,6 @@
 // 'use strict';
 
-import bookmarks from '/src/bookmark-list.js';
+import bookmarksList from './bookmark-list.js';
 
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/em';
 

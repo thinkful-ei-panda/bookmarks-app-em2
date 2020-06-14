@@ -67,7 +67,6 @@ export default {
   addBookmarkToStore,
   deleteBookmarkFromStore,
   setError,
-  // showDetailedView,
   bookmarks,
   adding,
   error,

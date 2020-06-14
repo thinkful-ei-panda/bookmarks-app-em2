@@ -1,9 +1,9 @@
-import store from '/src/store.js';
+import store from './store.js';
 
 
 // function to generate start page HTML
 const homePage = function(bookmarkListHTML) {
-  console.log('generate function');
+  // console.log('generate function');
   let homepageHTML = `<header>
   <h1>My Bookmarks App</h1>
   <p>All My Favorite Websites Bookmarked Here!</p>
