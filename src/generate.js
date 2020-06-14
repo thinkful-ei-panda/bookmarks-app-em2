@@ -1,4 +1,4 @@
-import store from './store.js';
+import store from '/src/store.js';
 
 
 // function to generate start page HTML

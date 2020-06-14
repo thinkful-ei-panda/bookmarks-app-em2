@@ -1,6 +1,6 @@
-import store from './store.js';
-import api from './api.js';
-import generate from './generate.js';
+import store from '/src/store.js';
+import api from '/src/api.js';
+import generate from '/src/generate.js';
 
 // function to get bookmark id from element (bookmark arg,
 // bookmark const in store.js)
