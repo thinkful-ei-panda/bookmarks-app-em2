@@ -13,6 +13,8 @@ const getBookmarkIDFromElement = function(bookmark) {
 
 
 
+
+
 // function to open form page when add new bookmark is clicked
 const handleAddNewBookmarkClick = function() {
   $('body').on('click', '.js-add-bookmark', event => {
@@ -86,6 +88,10 @@ const handleDeleteBookmarkClicked = function() {
       .then(() => {
         store.deleteBookmarkFromStore(bookmarkID);
         renderBookmarks();
+      })
+      .catch((error) => {
+        store.setError(error.message);
+        renderBookmarks();
       });
   });
 };
@@ -100,7 +106,7 @@ const handleFilterBookmarks = function() {
   $('body').on('change', '#js-filter', event => {
     console.log('filter works');
     store.filter = $('option:selected').val();
-    console.log(store.filter)
+    console.log(store.filter);
     renderBookmarks();
   });
 };

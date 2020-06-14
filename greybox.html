@@ -1,8 +1,11 @@
 <!-- Main Page HTML (condensed view) -->
 
-<div>
+<header>
+  <h1>Em's Bookmark App</h1>
+  <p>Keep Your Favorite Websites Bookmarked Here!</p>
+</header>
 <button class="js-add-bookmark">Add New Bookmark</button>
-<select class="filter" name="filter">
+<select id="js-filter" name="filter">
   <option value="">Filter By Rating</option>
   <option value="5">5 Stars</option>
   <option value="4">4 Stars</option>
@@ -11,62 +14,54 @@
   <option value="1">1 Star</option>
 </select>
 <div>
-  <ul class="js-bookmark-list">
-    <li class="js-item-element" data-item-id="${bookmark.id}">${bookmark.title}
-      <span>${bookmark.rating}</span>
-    </li>
+  <ul>
+  ${bookmarkListHTML}
   </ul>
-</div>
 </div>
 
 
 <!-- Add New Bookmark HTML -->
 
-<main>
-  <h2>Add New Bookmark</h2>
-  <form id="js-bookmark-list-form">
-    <label for="title">Bookmark Title</label>
-    <input type="text" name="title" placeholder="ie. Google" id="title" required>
-    <input type="link" name="url" placeholder="https://www.google.com/" id="link" required>
-    <select id="rating" name="rating" required>
-      <option value="">Select A Rating</option>
-      <option value="5">5 Stars</option>
-      <option value="4">4 Stars</option>
-      <option value="3">3 Stars</option>
-      <option value="2">2 Stars</option>
-      <option value="1">1 Star</option>
-    </select>
-    <input type="text" name="desc" placeholder="Add Description Here" id="desc" required>
-    <button type="submit">Create</button>
-    <button type="cancel">Cancel</button>
-  </form>
-</main>
-
-
-<!-- Expanded View HTML (with description and 'Visit Site' link -->
-
-<main>
-  <header>
-  <h1>Em's Bookmark App</h1>
-  </header>
-  <button>Add New Bookmark</button>
-  <select class="filter" name="filter">
-    <option value="">Filter By Rating</option>
+<form id="js-bookmark-list-form">
+  <label for="title">Bookmark Title</label>
+  <input type="text" name="title" placeholder="ie. Google" id="title" required>
+  <input type="link" name="url" placeholder="https://www.google.com/" id="link" required>
+  <select id="rating" name="rating" required>
+    <option value="">Select A Rating</option>
     <option value="5">5 Stars</option>
     <option value="4">4 Stars</option>
     <option value="3">3 Stars</option>
     <option value="2">2 Stars</option>
     <option value="1">1 Star</option>
   </select>
+  <input type="text" name="desc" placeholder="Add Description Here" id="desc" required>
+  ${errorHTML}
+  <button type="submit">Create</button>
+  <button class="js-cancel" type="cancel">Cancel</button>
+</form>
 
+
+
+<!-- List Element -->
+
+
+<li class="js-item-element" data-item-id="${store.bookmarks[i].id}">
+  ${store.bookmarks[i].title}<span>${store.bookmarks[i].rating}</span>
+  ${expandHTML}</li>
+
+
+
+<!-- Expanded View HTML (with description and 'Visit Site' link -->
+
+<div>
+  <div><p>${store.bookmarks[i].desc}</p></div>
   <div>
-    <h3>Title</h3>
-    <p>Lorem ispum</p>
-    <button>Visit Site</button>
-    <button>Delete Bookmark</button>
-    <p>Rating</p>
+  <a href="${store.bookmarks[i].url}">Visit Site</a>
   </div>
-</main>
+  <div>
+  <button class="js-delete">Delete</button>
+  </div>
+</div>
 
 
 <!-- Edit Bookmark HTML (optional) -->

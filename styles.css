@@ -1,5 +1,70 @@
-/* * {
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,400;1,200;1,400&display=swap');
+
+* {
   margin: 0;
   padding: 0;
   display: border-box;
-} */
+}
+
+body, main, form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+h1, button, input, select, ul, li, p, a {
+  font-family: 'Source Sans Pro';
+}
+
+header, ul, li, form, select, p, a {
+  /* text-align: center; */
+}
+
+h1 {
+  margin: 10px 5px;
+}
+
+header {
+  margin: 10px 5px 5px 5px;
+}
+
+button {
+  margin: 5px 15px;
+  padding: 10px 15px;
+  font-size: 15px;
+  background-color: #49f2f5;
+}
+
+select {
+  margin: 10px 10px;
+  padding: 5px 10px;
+}
+
+ul {
+  list-style: none;
+  margin: 10px 20px;
+}
+
+li {
+  margin: 10px 40px;
+  padding: 10px 40px;
+  font-size: 20px;
+  background-color: #49f2f5
+}
+
+span {
+  margin-left: 15px;
+}
+
+label {
+  margin: 10px 5px 10px 5px;
+  font-size: 20px;
+  padding: 10px 10px 5px 10px;
+}
+
+input {
+  margin: 10px 10px;
+  padding: 5px 5px;
+}
