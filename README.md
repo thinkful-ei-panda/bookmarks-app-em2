@@ -6,5 +6,5 @@ This app let's you bookmark your favorite web pages pages to a condensed view li
 You can choose an expanded view to visit the web page site and read a description.
 Feel free to delete a bookmark you do not need anymore while in the expanded view as well.
 
-Live App Link: 
+Live App Link: https://thinkful-ei-panda.github.io/bookmarks-app-em/
 
