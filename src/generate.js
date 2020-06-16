@@ -97,7 +97,7 @@ const addBookmarkForm = function() {
 // function to generate bookmarks string
 // const bookmarkString = function(bookmarkList) {
 //   const bookmarks = bookmarkList.map(bookmark => {
-//     $('body').html(generateBookmark(bookmark));
+//     $('main').html(generateBookmark(bookmark));
 //     return bookmarks.join('');
 //   });
 // };

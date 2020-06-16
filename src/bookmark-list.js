@@ -17,11 +17,11 @@ const getBookmarkIDFromElement = function(bookmark) {
 
 // function to open form page when add new bookmark is clicked
 const handleAddNewBookmarkClick = function() {
-  $('body').on('click', '.js-add-bookmark', event => {
+  $('main').on('click', '.js-add-bookmark', event => {
     event.preventDefault();
     // console.log('this was clicked');
     store.adding = !store.adding;
-    // $('body').html(generate.addBookmarkForm());
+    // $('main').html(generate.addBookmarkForm());
     // console.log(generate.addBookmarkForm(), 'lalala');
     renderBookmarks();
     // console.log(renderBookmarks(), 'boooooo');
@@ -34,7 +34,7 @@ const handleAddNewBookmarkClick = function() {
 // api.createBookmark plus 2 promise and error catch
 const handleNewBookmarkSubmit = function() {
   // console.log('does this Submit');
-  $('body').on('submit', '#js-bookmark-list-form', event => {
+  $('main').on('submit', '#js-bookmark-list-form', event => {
     event.preventDefault();
     // console.log('submit event');
     let params = {};
@@ -63,11 +63,11 @@ const handleNewBookmarkSubmit = function() {
 
 // function to handle cancel button click
 const handleCancelButtonClicked = function() {
-  $('body').on('click', '.js-cancel', event => {
+  $('main').on('click', '.js-cancel', event => {
     event.preventDefault();
     console.log('this was clicked');
     store.adding = !store.adding;
-    // $('body').html(generate.addBookmarkForm());
+    // $('main').html(generate.addBookmarkForm());
     // console.log(generate.addBookmarkForm(), 'lalala');
     renderBookmarks();
     // console.log(renderBookmarks(), 'boooooo');
@@ -79,7 +79,7 @@ const handleCancelButtonClicked = function() {
 
 // function to handle delete bookmark
 const handleDeleteBookmarkClicked = function() {
-  $('body').on('click', '.js-delete', event => {
+  $('main').on('click', '.js-delete', event => {
     event.preventDefault();
     console.log('this will delete');
     const bookmarkID = getBookmarkIDFromElement(event.currentTarget);
@@ -103,7 +103,7 @@ const handleDeleteBookmarkClicked = function() {
 
 // function to handle filtering bookmarks, use filter variable in store
 const handleFilterBookmarks = function() {
-  $('body').on('change', '#js-filter', event => {
+  $('main').on('change', '#js-filter', event => {
     console.log('filter works');
     store.filter = $('option:selected').val();
     console.log(store.filter);
@@ -116,7 +116,7 @@ const handleFilterBookmarks = function() {
 
 // function to handle detailed view clicked
 const handleDetailedViewClicked = function() {
-  $('body').on('click', '.js-item-element', event => {
+  $('main').on('click', '.js-item-element', event => {
     console.log('detailed view');
     const bookmarkID = getBookmarkIDFromElement(event.currentTarget);
     console.log(bookmarkID)
@@ -134,12 +134,12 @@ const handleDetailedViewClicked = function() {
 const renderBookmarks = function() {
   if (store.adding) {
     const bookmarkformHTML = generate.addBookmarkForm();
-    $('body').html(bookmarkformHTML);
+    $('main').html(bookmarkformHTML);
   } else {
     const bookmarkListItemsString = generate.generateBookmark();
     // console.log(bookmarkListItemsString);
     // console.log(store.bookmarks);
-    $('body').html(bookmarkListItemsString);
+    $('main').html(bookmarkListItemsString);
   }
 };
 

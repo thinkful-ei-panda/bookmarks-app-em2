@@ -13,7 +13,7 @@ const main = function() {
   // generate start page html
   // const homepage = bookmarks.generateHomePage();
   // console.log('homepage', homepage);
-  // $('body').html(bookmarksList.generateHomePage());
+  // $('main').html(bookmarksList.generateHomePage());
   api.getBookmarksAPI()
     .then((bookmarks) => {
       bookmarks.forEach((bookmark) => store.addBookmarkToStore(bookmark));
